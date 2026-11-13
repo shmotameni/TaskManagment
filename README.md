@@ -12,12 +12,12 @@ The application is designed using a microservices architecture, where each servi
 
 The project is planned to consist of the following services:
 
-Service                Responsibility
-------------           ----------------
-UserService            User management
-TaskService            Task creation, updating, retrieving, and deletion
-NotificationService    Handling task-related notifications
-ApiGateway             Routing client requests to the appropriate services
+Service                      Responsibility
+------------                 ----------------
+UserService------------------User management
+TaskService------------------Task creation, updating, retrieving, and deletion
+NotificationService----------Handling task-related notifications
+ApiGateway-------------------Routing client requests to the appropriate services
 
 Each microservice will manage its own data and business logic.
 
