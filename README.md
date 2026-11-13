@@ -12,8 +12,8 @@ The application is designed using a microservices architecture, where each servi
 
 The project is planned to consist of the following services:
 
-Service                      Responsibility
-------------                 ----------------
+Service----------------------Responsibility
+
 UserService------------------User management
 
 TaskService------------------Task creation, updating, retrieving, and deletion
