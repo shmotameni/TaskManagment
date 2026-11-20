@@ -31,5 +31,18 @@ namespace TaskService.Controllers
         {
             return Ok(_tasks);
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<TaskItem> GetTaskById(int id)
+        {
+            var task = _tasks.FirstOrDefault(t => t.Id == id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(task);
+        }
     }
 }
