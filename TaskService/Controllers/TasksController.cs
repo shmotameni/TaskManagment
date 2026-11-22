@@ -31,5 +31,49 @@ namespace TaskService.Controllers
         {
             return Ok(_tasks);
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<TaskItem> GetTaskById(int id)
+        {
+            var task = _tasks.FirstOrDefault(t => t.Id == id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(task);
+        }
+
+        [HttpPost]
+        public ActionResult<TaskItem> CreateTask([FromBody] TaskItem task)
+        {
+            task.Id = _tasks.Count == 0 ? 1 : _tasks.Max(t => t.Id) + 1;
+
+            _tasks.Add(task);
+
+            return CreatedAtAction(
+                nameof(GetTaskById),
+                new { id = task.Id },
+                task
+            );
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateTask(int id, [FromBody] TaskItem updatedTask)
+        {
+            var existingTask = _tasks.FirstOrDefault(t => t.Id == id);
+
+            if (existingTask == null)
+            {
+                return NotFound();
+            }
+
+            existingTask.Title = updatedTask.Title;
+            existingTask.Description = updatedTask.Description;
+            existingTask.IsCompleted = updatedTask.IsCompleted;
+
+            return NoContent();
+        }
     }
 }
