@@ -8,7 +8,7 @@ namespace TaskService.Controllers
     [ApiController]
     public class TasksController : ControllerBase
     {
-        private readonly List<TaskItem> _tasks = new()
+        private static readonly List<TaskItem> _tasks = new()
         {
             new TaskItem
             {
